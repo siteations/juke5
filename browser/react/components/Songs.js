@@ -2,6 +2,8 @@ import React from 'react';
 
 export default function (props) {
 
+  console.log(props.songs);
+
   const songs = props.songs;
   const currentSong = props.currentSong;
   const isPlaying = props.isPlaying;

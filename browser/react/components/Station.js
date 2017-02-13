@@ -1,16 +1,23 @@
 import React from 'react';
 import Songs from './Songs';
 
-const DUMMY_GENRE_NAME = 'Jazz';
-const DUMMY_SONGS = [{
-  id: 1,
-  name: "A Love Supreme",
-  genre: "Jazz",
-  artists: [{ name: "John Coltrane" }]
-}];
-const DUMMY_CURRENT_SONG = {};
-const DUMMY_IS_PLAYING = false;
-const DUMMY_TOGGLE_ONE = function () {};
+// const DUMMY_GENRE_NAME = 'Jazz';
+// const DUMMY_SONGS = [{
+//   id: 1,
+//   name: "A Love Supreme",
+//   genre: "Jazz",
+//   artists: [{ name: "John Coltrane" }]
+// }];
+// const DUMMY_CURRENT_SONG = {};
+// const DUMMY_IS_PLAYING = false;
+// const DUMMY_TOGGLE_ONE = function () {};
+
+  // return {
+  //   genre: ownProps.params.genre,
+  //   songs: filteredSongs,
+  //   isPlaying: state.isPlaying,
+  //   currentSong: state.currentSong,
+  // };
 
 export default function (props) {
 
@@ -18,12 +25,12 @@ export default function (props) {
 
   return (
     <div>
-      <h3>{ DUMMY_GENRE_NAME } Station</h3>
+      <h3>{ props.genre } Station</h3>
       <Songs
-        songs={DUMMY_SONGS}
-        currentSong={DUMMY_CURRENT_SONG}
-        isPlaying={DUMMY_IS_PLAYING}
-        toggleOne={DUMMY_TOGGLE_ONE}
+        songs={ props.songs }
+        currentSong={ props.currentSong }
+        isPlaying={ props.isPlaying }
+        toggleOne={ props.toggleOne }
       />
     </div>
   );

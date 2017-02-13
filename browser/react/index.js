@@ -42,6 +42,7 @@ const onAppEnter = function () {
 
 
 const onStationsEnter = function (nextRouterState){
+  const genre = nextRouterState.params.genre;
   store.dispatch(loadAllSongs());
 };
 
@@ -73,7 +74,7 @@ ReactDOM.render(
         <Route path="/playlists/:playlistId" component={PlaylistContainer} onEnter={onPlaylistEnter}/>
         <Route path="/lyrics" component={LyricsContainer} />
         <Route path="/stations" component={StationsContainer} onEnter= {onStationsEnter} />
-         <Route path="/stations/:genre" component={StationContainer} />
+        <Route path="/stations/:genre" component={StationContainer} onEnter={onStationsEnter} />
         <IndexRedirect to="/albums"/>
       </Route>
     </Router>
