@@ -1,26 +1,20 @@
-import React, {Component} from 'react';
-import store from '../store';
+import {connect} from 'react-redux';
+import { toggleOne } from '../action-creators/player.js';
+
 import Albums from '../components/Albums';
 
-export default class extends Component {
-
-  constructor() {
-    super();
-    this.state = store.getState().albums;
+const mapStateToProps = function (state){
+  return {
+    albums: state.albums.list
   }
+};
 
-  componentDidMount() {
-    this.unsubscribe = store.subscribe(() => {
-      this.setState(store.getState().albums);
-    });
-  }
+const mapDispatchToProps = function (dispatch){
+  return {
+    //all our dispatching...
+  };
+};
 
-  componentWillUnmount() {
-    this.unsubscribe();
-  }
+const AlbumsContainer = connect(mapStateToProps, mapDispatchToProps)(Albums);
 
-  render() {
-    return <Albums albums={this.state.list}/>;
-  }
-
-}
+export default AlbumsContainer;

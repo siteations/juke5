@@ -1,7 +1,10 @@
 import React from 'react';
 import {Link} from 'react-router';
+import store from '../store.js';
 
 export default function (props) {
+
+  console.log(props);
 
   const albums = props.albums;
 

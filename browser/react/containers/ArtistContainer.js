@@ -1,38 +1,50 @@
-import React, {Component} from 'react';
-import store from '../store';
+import { connect } from 'react-redux';
+
 import Artist from '../components/Artist';
 
 import {toggleSong} from '../action-creators/player';
 
-export default class extends Component {
 
-  constructor() {
-    super();
-    this.state = store.getState();
+
+
+const mapStateToProps = function (state, ownProps){
+  // console.log('own props:', ownProps);
+  // console.log('state:', state);
+
+  return {
+    selectedArtist: state.artists.selected,
+    children: ownProps.children,
+    currentSong: state.player.currentSong,
+    isPlaying: state.player.isPlaying
   }
+};
 
-  componentDidMount() {
-    this.unsubscribe = store.subscribe(() => {
-      this.setState(store.getState());
-    });
-  }
+const mapDispatchToProps = function (dispatch){
+  return {
+    //all our dispatching...
+    toggleOne: function(song, list) {
+      dispatch(toggleSong(song, list));
+    }
+  };
+};
 
-  componentWillUnmount() {
-    this.unsubscribe();
-  }
+const ArtistContainer = connect(mapStateToProps, mapDispatchToProps)(Artist);
 
-  toggle(song, list) {
-    store.dispatch(toggleSong(song, list));
-  }
+export default ArtistContainer;
 
-  render() {
-    return (
-      <Artist
-        {...this.state.player}
-        selectedArtist={this.state.artists.selected}
-        toggleOne={this.toggle}
-        children={this.props.children} />
-    );
-  }
 
-}
+
+
+// export default class extends Component {
+
+//   render() {
+//     return (
+//       <Artist
+//         {...this.state.player}
+//         selectedArtist={this.state.artists.selected}
+//         toggleOne={this.toggle}
+//         children={this.props.children} />
+//     );
+//   }
+
+// }

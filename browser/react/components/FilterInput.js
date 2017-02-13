@@ -4,9 +4,12 @@ const FilterInput = (props) => {
 
   const handleChange = props.handleChange;
   const inputValue = props.inputValue;
+  const prevD = function (e){
+    e.preventDefault();
+  }
 
   return (
-    <form className='form-group' style={{marginTop: '20px'}}>
+    <form onSubmit={prevD} className='form-group' style={{marginTop: '20px'}}>
       <input
         onChange={handleChange}
         value={inputValue}
