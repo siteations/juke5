@@ -10,6 +10,8 @@ export default function (props) {
   const artistChange = e => props.setArtist(e.target.value);
   const songChange = e => props.setSong(e.target.value);
 
+  console.log(props);
+  
   return (
     <div style={{marginTop: '20px'}}>
       <form onSubmit={handleSubmit}>

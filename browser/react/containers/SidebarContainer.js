@@ -6,7 +6,7 @@ import {connect} from 'react-redux';
 
 const mapStateToProps = function (state){
 
-  console.log('sidebarCnt state: ', state);
+//   console.log('sidebarCnt state: ', state);
 
   return {
     playlists : state.playlists.list,
